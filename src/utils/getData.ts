@@ -1,4 +1,5 @@
-import api from "../service/api";
+import IVehicle from '@/types/vehicle';
+import api from '../service/api';
 
 export interface IModel {
   id: number;
@@ -9,19 +10,20 @@ export default async function FetchData(): Promise<IModel[]> {
   const types: IModel[] = [];
 
   try {
-    const response = await api.get('/vehicles/GetMakesForVehicleType/car?format=json');
+    const response = await api.get(
+      '/vehicles/GetMakesForVehicleType/car?format=json'
+    );
 
     const { Results } = response.data;
 
     if (Array.isArray(Results)) {
-      return Results.map((item: any) => ({
+      return Results.map((item: IVehicle) => ({
         id: item.MakeId,
-        model: item.MakeName
+        model: item.MakeName,
       }));
     }
 
     return Results;
-
   } catch (error) {
     console.error('Error fetching data:', error);
   }
