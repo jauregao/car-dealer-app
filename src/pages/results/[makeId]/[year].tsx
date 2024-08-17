@@ -17,21 +17,21 @@ const ResultPage = ({ makeName, modelNames = [], year }: Props) => {
   };
 
   return (
-    <div className="w-3/4 h-full">
+    <div className="sm:w-3/4 w-full h-full">
       <Image
-        className="-mb-14 ml-6 rotate-90 cursor-pointer"
+        className="sm:-mb-14 sm:ml-6 -mb-8 ml-2 sm:h-30 sm:w-30 rotate-90 cursor-pointer"
         src="/back_arrow_icon_134660.svg"
-        width={30}
-        height={30}
+        width={20}
+        height={20}
         alt="voltar"
         onClick={() => onClick()}
       ></Image>
-      <div className="text-text h-fit bg-primary p-20 rounded-lg shadow-black/80 flex justify-center flex-col ">
-        <h1 className="text-4xl font-bold mb-10">
+      <div className="text-text h-fit bg-primary p-10 sm:p-20 rounded-lg shadow-black/80 flex justify-center flex-col ">
+        <h1 className="text-2xl sm:text-4xl font-bold mb-10">
           Results for {makeName} - {year}
         </h1>
         <Suspense fallback={<div>Loading...</div>}>
-          <ul className="list-disc pl-5 font-bold grid grid-cols-3 gap-4">
+          <ul className="list-disc pl-5 font-bold grid grid-cols-1 sm:grid-cols-3 gap-4">
             {modelNames.length > 0 ? (
               modelNames.map((model, index) => (
                 <li key={index} className="text-lg mb-2">
